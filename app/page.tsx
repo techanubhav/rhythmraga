@@ -1,4 +1,4 @@
-import { getSanityData } from '@/lib/sanity'
+import { getSanityData, urlFor } from '@/lib/sanity'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -27,15 +27,46 @@ export const metadata: Metadata = {
 export default async function Home() {
   // Fetch home page content from Sanity
   const homeContent = await getSanityData('homePage')
+  
+  // Debug: Log the fetched data to check if heroButton exists
+  console.log('Home Content:', JSON.stringify(homeContent, null, 2))
 
   return (
     <>
       {/* Hero Section */}
-      <section className="hero">
+      <section 
+        className="hero"
+        style={{
+          backgroundImage: homeContent?.heroImage 
+            ? `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${urlFor(homeContent.heroImage).width(1920).height(1080).url()})` 
+            : undefined,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
         <div className="container">
           <h1>{homeContent?.title || "Welcome to Rhythm Raga"}</h1>
           <p>{homeContent?.subtitle || "Where Music Meets Movement - Premier Academy for Indian Classical Music, Bollywood Dance, and More!"}</p>
-          <a href="/registration" className="btn btn-primary">Start Your Musical Journey</a>
+          {homeContent?.heroButton ? (
+            <a 
+              href={homeContent.heroButton.url || "/registration"}
+              className={`btn ${homeContent.heroButton.style || "btn-primary"}`}
+              target={homeContent.heroButton.isExternal ? "_blank" : "_self"}
+              rel={homeContent.heroButton.isExternal ? "noopener noreferrer" : undefined}
+              style={{zIndex: 10, position: 'relative'}}
+            >
+              {homeContent.heroButton.text || "Start Your Musical Journey"}
+            </a>
+          ) : (
+            <a 
+              href="/registration" 
+              className="btn btn-primary"
+              style={{zIndex: 10, position: 'relative'}}
+            >
+              Start Your Musical Journey
+            </a>
+          )}
         </div>
       </section>
 
@@ -44,24 +75,49 @@ export default async function Home() {
         <div className="container">
           <div className="grid grid-2">
             <div>
-              <h2>Discover Your Rhythm</h2>
-              <p>
-                At Rhythm Raga, we believe that music and dance are universal languages that connect hearts and souls. 
-                Our academy has been nurturing artistic talents for over a decade, providing comprehensive training in 
-                traditional Indian music and contemporary dance forms.
-              </p>
-              <p>
-                Whether you're a beginner taking your first steps or an advanced student looking to refine your skills, 
-                our experienced instructors are here to guide you on your artistic journey.
-              </p>
+              <h2>{homeContent?.aboutPreview?.title || "Discover Your Rhythm"}</h2>
+              {homeContent?.aboutPreview?.description ? (
+                <div>
+                  {homeContent.aboutPreview.description.map((block: any, index: number) => {
+                    if (block._type === 'block') {
+                      return (
+                        <p key={index}>
+                          {block.children?.map((child: any) => child.text).join('') || ''}
+                        </p>
+                      );
+                    }
+                    return null;
+                  })}
+                </div>
+              ) : (
+                <>
+                  <p>
+                    At Rhythm Raga, we believe that music and dance are universal languages that connect hearts and souls. 
+                    Our academy has been nurturing artistic talents for over a decade, providing comprehensive training in 
+                    traditional Indian music and contemporary dance forms.
+                  </p>
+                  <p>
+                    Whether you're a beginner taking your first steps or an advanced student looking to refine your skills, 
+                    our experienced instructors are here to guide you on your artistic journey.
+                  </p>
+                </>
+              )}
               <a href="/about" className="btn btn-secondary">Learn More About Us</a>
             </div>
             <div>
-              <img 
-                src="/images/academy-interior.jpg" 
-                alt="Rhythm Raga Academy Interior" 
-                style={{width: '100%', height: '300px', objectFit: 'cover', borderRadius: '10px'}}
-              />
+              {homeContent?.aboutPreview?.image ? (
+                <img 
+                  src={urlFor(homeContent.aboutPreview.image).width(800).height(300).url()} 
+                  alt={homeContent.aboutPreview.image.alt || "Rhythm Raga Academy"} 
+                  style={{width: '100%', height: '300px', objectFit: 'cover', borderRadius: '10px'}}
+                />
+              ) : (
+                <img 
+                  src="/images/academy-interior.jpg" 
+                  alt="Rhythm Raga Academy Interior" 
+                  style={{width: '100%', height: '300px', objectFit: 'cover', borderRadius: '10px'}}
+                />
+              )}
             </div>
           </div>
         </div>

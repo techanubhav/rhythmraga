@@ -186,12 +186,23 @@ main {
   margin-bottom: 1rem;
   z-index: 1;
   position: relative;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero p {
   font-size: 1.25rem;
   margin-bottom: 2rem;
   z-index: 1;
+  position: relative;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero .btn {
+  z-index: 2;
   position: relative;
 }
 
@@ -353,10 +364,12 @@ main {
   
   .hero h1 {
     font-size: 2.5rem;
+    max-width: 90%;
   }
   
   .hero p {
     font-size: 1rem;
+    max-width: 90%;
   }
   
   .container {
@@ -383,6 +396,7 @@ main {
   
   .hero h1 {
     font-size: 2rem;
+    max-width: 95%;
   }
   
   .card {

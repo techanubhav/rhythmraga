@@ -27,6 +27,48 @@ export const homePage = {
       description: 'Background image for the hero section',
     },
     {
+      name: 'heroButton',
+      title: 'Hero Call-to-Action Button',
+      type: 'object',
+      fields: [
+        {
+          name: 'text',
+          title: 'Button Text',
+          type: 'string',
+          initialValue: 'Start Your Musical Journey',
+          validation: (Rule: any) => Rule.required().max(50),
+        },
+        {
+          name: 'url',
+          title: 'Button URL',
+          type: 'string',
+          initialValue: '/registration',
+          validation: (Rule: any) => Rule.required(),
+          description: 'Internal link (e.g., /registration) or external URL (e.g., https://example.com)',
+        },
+        {
+          name: 'isExternal',
+          title: 'External Link',
+          type: 'boolean',
+          initialValue: false,
+          description: 'Check if this links to an external website',
+        },
+        {
+          name: 'style',
+          title: 'Button Style',
+          type: 'string',
+          options: {
+            list: [
+              { title: 'Primary (Blue)', value: 'btn-primary' },
+              { title: 'Secondary (White)', value: 'btn-secondary' },
+            ],
+          },
+          initialValue: 'btn-primary',
+        },
+      ],
+      description: 'Customizable call-to-action button for the hero section',
+    },
+    {
       name: 'aboutPreview',
       title: 'About Preview Section',
       type: 'object',
