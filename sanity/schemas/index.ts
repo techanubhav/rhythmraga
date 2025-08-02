@@ -5,6 +5,7 @@ import { instructor } from './instructor'
 import { program } from './program'
 import { testimonial } from './testimonial'
 import { gallery } from './gallery'
+import { footer } from './footer'
 
 export const schemaTypes = [
   homePage,
@@ -14,4 +15,5 @@ export const schemaTypes = [
   program,
   testimonial,
   gallery,
+  footer,
 ]

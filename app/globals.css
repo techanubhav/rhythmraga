@@ -5,13 +5,25 @@
   box-sizing: border-box;
 }
 
+/* Font optimization for Adobe Fonts */
+@font-face {
+  font-family: 'gelica';
+  font-display: swap; /* Improves loading performance */
+}
+
+/* CSS Custom Properties */
+:root {
+  --primary-font: 'gelica', 'Arial', 'Helvetica Neue', sans-serif;
+  --heading-font: 'gelica', 'Arial', 'Helvetica Neue', sans-serif;
+}
+
 html {
   font-size: 16px;
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: var(--primary-font);
   line-height: 1.6;
   color: #333;
   background-color: #fff;
@@ -21,6 +33,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1rem;
   font-weight: 600;
+  font-family: var(--heading-font);
 }
 
 h1 { font-size: 2.5rem; }
@@ -36,14 +49,19 @@ p {
 
 /* Color palette */
 :root {
-  --primary-color: #8B4513; /* Saddle Brown - representing traditional music */
-  --secondary-color: #FF6B35; /* Orange Red - energy and dance */
-  --accent-color: #FFD700; /* Gold - premium feel */
+  --primary-color: #800020; /* Maroon - premium CTAs and Register buttons */
+  --primary-hover: #660019; /* Darker Maroon - primary button hover */
+  --secondary-color: #FFC107; /* Gold - secondary actions */
+  --secondary-hover: #E0A800; /* Dark Gold - secondary button hover */
+  --accent-color: #FFC107; /* Gold accent - premium feel */
+  --link-color: #004B8D; /* Royal Blue - links */
+  --link-hover: #005FA8; /* Lighter Blue - link hover */
   --text-color: #333;
   --text-light: #666;
   --background-light: #F8F9FA;
   --border-color: #E0E0E0;
   --white: #FFFFFF;
+  --black: #000000;
   --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
 }
 
@@ -228,21 +246,86 @@ main {
 }
 
 .btn-primary {
-  background: var(--primary-color);
-  color: var(--white);
+  background: var(--primary-color); /* Maroon #800020 */
+  color: var(--white); /* White #FFFFFF */
+  border: none;
 }
 
 .btn-primary:hover {
-  background: #6B3410;
-}
-
-.btn-secondary {
-  background: var(--secondary-color);
+  background: var(--primary-hover); /* Darker Maroon #660019 */
   color: var(--white);
 }
 
+.btn-secondary {
+  background: var(--secondary-color); /* Gold #FFC107 */
+  color: var(--black); /* Black #000000 */
+  border: none;
+}
+
 .btn-secondary:hover {
-  background: #E55A2B;
+  background: var(--secondary-hover); /* Dark Gold #E0A800 */
+  color: var(--black);
+}
+
+/* Footer Logo */
+.footer-logo {
+  display: inline-block;
+  margin-bottom: 1rem;
+  text-decoration: none;
+}
+
+.footer-logo-img {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.footer-logo-img:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+/* Contact Items */
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  color: var(--white);
+}
+
+.contact-item svg {
+  color: var(--secondary-color);
+  flex-shrink: 0;
+}
+
+.contact-item span {
+  font-size: 0.95rem;
+}
+
+/* Social Icons */
+.social-icon {
+  transition: color 0.3s ease, transform 0.2s ease, background-color 0.3s ease !important;
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.social-icon:hover {
+  color: var(--white) !important;
+  transform: translateY(-2px);
+  text-decoration: none !important;
+}
+
+/* Links */
+a {
+  color: var(--link-color); /* Royal Blue #004B8D */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--link-hover); /* Lighter Blue #005FA8 */
+  text-decoration: underline;
 }
 
 /* Cards */

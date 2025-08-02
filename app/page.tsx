@@ -102,7 +102,7 @@ export default async function Home() {
                   </p>
                 </>
               )}
-              <a href="/about" className="btn btn-secondary">Learn More About Us</a>
+              <a href="/about" className="btn btn-primary">Learn More About Us</a>
             </div>
             <div>
               {homeContent?.aboutPreview?.image ? (
