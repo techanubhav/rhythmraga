@@ -1,4 +1,5 @@
 import { getSanityData, urlFor } from '@/lib/sanity'
+import Image from 'next/image'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -34,39 +35,45 @@ export default async function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section 
-        className="hero"
-        style={{
-          backgroundImage: homeContent?.heroImage 
-            ? `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${urlFor(homeContent.heroImage).width(1920).height(1080).url()})` 
-            : undefined,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
-      >
-        <div className="container">
-          <h1>{homeContent?.title || "Welcome to Rhythm Raga"}</h1>
-          <p>{homeContent?.subtitle || "Where Music Meets Movement - Premier Academy for Indian Classical Music, Bollywood Dance, and More!"}</p>
-          {homeContent?.heroButton ? (
-            <a 
-              href={homeContent.heroButton.url || "/registration"}
-              className={`btn ${homeContent.heroButton.style || "btn-primary"}`}
-              target={homeContent.heroButton.isExternal ? "_blank" : "_self"}
-              rel={homeContent.heroButton.isExternal ? "noopener noreferrer" : undefined}
-              style={{zIndex: 10, position: 'relative'}}
-            >
-              {homeContent.heroButton.text || "Start Your Musical Journey"}
-            </a>
-          ) : (
-            <a 
-              href="/registration" 
-              className="btn btn-primary"
-              style={{zIndex: 10, position: 'relative'}}
-            >
-              Start Your Musical Journey
-            </a>
-          )}
+      <section className="hero-container">
+        {homeContent?.heroImage && (
+          <Image
+            src={urlFor(homeContent.heroImage).width(1920).height(1080).url()}
+            alt="Hero Background"
+            width={1920}
+            height={1080}
+            priority={true}
+            sizes="100vw"
+            className="hero-background-image"
+            style={{
+              objectFit: 'cover',
+              objectPosition: 'center 20%',
+            }}
+          />
+        )}
+        <div className="hero-overlay"></div>
+        <div className="hero-content">
+          <div className="container">
+            <h1>{homeContent?.title || "Welcome to Rhythm Raga"}</h1>
+            <p>{homeContent?.subtitle || "Where Music Meets Movement - Premier Academy for Indian Classical Music, Bollywood Dance, and More!"}</p>
+            {homeContent?.heroButton ? (
+              <a 
+                href={homeContent.heroButton.url || "/registration"}
+                className={`btn ${homeContent.heroButton.style || "btn-primary"}`}
+                target={homeContent.heroButton.isExternal ? "_blank" : "_self"}
+                rel={homeContent.heroButton.isExternal ? "noopener noreferrer" : undefined}
+              >
+                {homeContent.heroButton.text || "Start Your Musical Journey"}
+              </a>
+            ) : (
+              <a 
+                href="/registration" 
+                className="btn btn-primary"
+              >
+                Start Your Musical Journey
+              </a>
+            )}
+          </div>
         </div>
       </section>
 
@@ -106,15 +113,21 @@ export default async function Home() {
             </div>
             <div>
               {homeContent?.aboutPreview?.image ? (
-                <img 
+                <Image 
                   src={urlFor(homeContent.aboutPreview.image).width(800).height(300).url()} 
                   alt={homeContent.aboutPreview.image.alt || "Rhythm Raga Academy"} 
+                  width={800}
+                  height={300}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   style={{width: '100%', height: '300px', objectFit: 'cover', borderRadius: '10px'}}
                 />
               ) : (
-                <img 
+                <Image 
                   src="/images/academy-interior.jpg" 
                   alt="Rhythm Raga Academy Interior" 
+                  width={800}
+                  height={300}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   style={{width: '100%', height: '300px', objectFit: 'cover', borderRadius: '10px'}}
                 />
               )}

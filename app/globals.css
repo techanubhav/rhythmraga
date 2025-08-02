@@ -5,11 +5,7 @@
   box-sizing: border-box;
 }
 
-/* Font optimization for Adobe Fonts */
-@font-face {
-  font-family: 'gelica';
-  font-display: swap; /* Improves loading performance */
-}
+/* Adobe Fonts loaded via link tag in layout.tsx for better performance */
 
 /* CSS Custom Properties */
 :root {
@@ -173,17 +169,38 @@ main {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-/* Hero section */
-.hero {
-  background: var(--gradient);
-  color: var(--white);
-  text-align: center;
-  padding: 6rem 0;
+/* Hero section - Optimized with Next.js Image */
+.hero-container {
   position: relative;
+  height: 70vh;
+  min-height: 500px;
+  max-height: 600px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.hero::before {
+.hero-background-image {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+  z-index: 2;
+}
+
+.hero-overlay::before {
   content: '';
   position: absolute;
   top: 0;
@@ -192,11 +209,52 @@ main {
   bottom: 0;
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
   animation: float 20s infinite linear;
+  z-index: 1;
 }
 
 @keyframes float {
   0% { transform: translateY(0px); }
   100% { transform: translateY(-100px); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  color: var(--white);
+  text-align: center;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Fallback hero styles for when no image is loaded */
+.hero-container:not(:has(.hero-background-image)) {
+  background: var(--gradient);
+}
+
+/* Legacy hero class support */
+.hero {
+  background: var(--gradient);
+  color: var(--white);
+  text-align: center;
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero h1 {
@@ -222,6 +280,59 @@ main {
 .hero .btn {
   z-index: 2;
   position: relative;
+}
+
+/* Responsive hero styles */
+@media (max-width: 768px) {
+  .hero-container {
+    height: 60vh;
+    min-height: 400px;
+    max-height: 500px;
+  }
+  
+  .hero-background-image {
+    object-position: center 30% !important;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+    padding: 0 1rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-container {
+    height: 50vh;
+    min-height: 350px;
+    max-height: 450px;
+  }
+  
+  .hero-background-image {
+    object-position: center 40% !important;
+  }
+  
+  .hero-content h1 {
+    font-size: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .hero-content p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
 }
 
 /* Buttons */

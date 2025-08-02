@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { getSanityData } from '@/lib/sanity'
 import SocialIcon from '@/components/SocialIcons'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: {
@@ -78,9 +79,13 @@ export default async function RootLayout({
           <nav className="navbar">
             <div className="nav-container">
               <div className="nav-logo">
-                <img 
+                <Image 
                   src="/images/logo.png" 
                   alt="Rhythm Raga Academy" 
+                  width={120}
+                  height={80}
+                  priority={true}
+                  sizes="120px"
                   style={{height: '80px', width: 'auto'}}
                 />
               </div>
@@ -231,9 +236,12 @@ export default async function RootLayout({
           <div className="footer-container">
             <div className="footer-section">
               <a href="/" className="footer-logo">
-                <img
+                <Image
                   src="/images/logo_gold.png"
                   alt={footerContent?.academyInfo?.name || "Rhythm Raga Academy"}
+                  width={120}
+                  height={80}
+                  sizes="120px"
                   className="footer-logo-img"
                 />
               </a>
