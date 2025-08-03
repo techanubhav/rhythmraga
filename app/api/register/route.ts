@@ -6,13 +6,50 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
 
     // Validate required fields
-    const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'age', 'program']
+    const requiredFields = ['fullName', 'email', 'phone', 'dateOfBirth', 'program', 'preferredMode']
     for (const field of requiredFields) {
       if (!body[field]) {
         return NextResponse.json(
           { error: `Missing required field: ${field}` },
           { status: 400 }
         )
+      }
+    }
+
+    // Validate consent fields
+    const requiredConsents = ['medicalConsent', 'privacyConsent', 'termsConsent', 'feeAgreement']
+    for (const consent of requiredConsents) {
+      if (!body[consent]) {
+        return NextResponse.json(
+          { error: `Missing required consent: ${consent}` },
+          { status: 400 }
+        )
+      }
+    }
+
+    // Calculate age from date of birth
+    const calculateAge = (dateOfBirth: string): number => {
+      const today = new Date()
+      const birthDate = new Date(dateOfBirth)
+      let age = today.getFullYear() - birthDate.getFullYear()
+      const monthDiff = today.getMonth() - birthDate.getMonth()
+      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--
+      }
+      return age
+    }
+
+    // For minors, validate additional required fields
+    const age = calculateAge(body.dateOfBirth)
+    if (age < 18) {
+      const minorRequiredFields = ['parentGuardianName', 'relationshipToStudent', 'parentalConsent']
+      for (const field of minorRequiredFields) {
+        if (!body[field]) {
+          return NextResponse.json(
+            { error: `Missing required field for minors: ${field}` },
+            { status: 400 }
+          )
+        }
       }
     }
 
@@ -40,26 +77,35 @@ export async function POST(request: NextRequest) {
 
     const rowData = [
       currentDate, // Timestamp
-      body.firstName,
-      body.lastName,
+      body.fullName,
       body.email,
       body.phone,
-      body.age,
+      body.dateOfBirth,
+      age, // Calculated age
       body.program,
       body.experience || '',
-      body.preferredSchedule || '',
+      body.preferredMode,
+      body.parentGuardianName || '',
+      body.relationshipToStudent || '',
       body.emergencyContact || '',
       body.emergencyPhone || '',
       body.medicalConditions || '',
       body.hearAboutUs || '',
       body.additionalNotes || '',
+      // Consent fields
+      body.parentalConsent ? 'Yes' : 'No',
+      body.medicalConsent ? 'Yes' : 'No',
+      body.privacyConsent ? 'Yes' : 'No',
+      body.photographyConsent ? 'Yes' : 'No',
+      body.termsConsent ? 'Yes' : 'No',
+      body.feeAgreement ? 'Yes' : 'No',
       'New', // Status
     ]
 
     // Append to Google Sheet
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'Registrations!A:O', // Adjust range based on your sheet structure
+      range: 'Registrations!A:W', // Updated range to accommodate new fields (23 columns)
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [rowData],

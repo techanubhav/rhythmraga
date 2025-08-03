@@ -3,30 +3,53 @@
 import { useState } from 'react'
 
 export default function Registration() {
+  // Helper function to calculate age from date of birth
+  const calculateAge = (dateOfBirth: string): number => {
+    if (!dateOfBirth) return 0
+    const today = new Date()
+    const birthDate = new Date(dateOfBirth)
+    let age = today.getFullYear() - birthDate.getFullYear()
+    const monthDiff = today.getMonth() - birthDate.getMonth()
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+      age--
+    }
+    return age
+  }
+
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+    fullName: '',
     email: '',
     phone: '',
-    age: '',
+    dateOfBirth: '',
     program: '',
     experience: '',
-    preferredSchedule: '',
+    preferredMode: '',
+    parentGuardianName: '',
+    relationshipToStudent: '',
     emergencyContact: '',
     emergencyPhone: '',
     medicalConditions: '',
     hearAboutUs: '',
-    additionalNotes: ''
+    additionalNotes: '',
+    // Consent checkboxes
+    parentalConsent: false,
+    medicalConsent: false,
+    privacyConsent: false,
+    photographyConsent: false,
+    termsConsent: false,
+    feeAgreement: false
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
+    const { name, value, type } = e.target
+    const checked = (e.target as HTMLInputElement).checked
+    
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: type === 'checkbox' ? checked : value
     }))
   }
 
@@ -47,19 +70,27 @@ export default function Registration() {
       if (response.ok) {
         setSubmitStatus('success')
         setFormData({
-          firstName: '',
-          lastName: '',
+          fullName: '',
           email: '',
           phone: '',
-          age: '',
+          dateOfBirth: '',
           program: '',
           experience: '',
-          preferredSchedule: '',
+          preferredMode: '',
+          parentGuardianName: '',
+          relationshipToStudent: '',
           emergencyContact: '',
           emergencyPhone: '',
           medicalConditions: '',
           hearAboutUs: '',
-          additionalNotes: ''
+          additionalNotes: '',
+          // Consent checkboxes
+          parentalConsent: false,
+          medicalConsent: false,
+          privacyConsent: false,
+          photographyConsent: false,
+          termsConsent: false,
+          feeAgreement: false
         })
       } else {
         setSubmitStatus('error')
@@ -95,32 +126,18 @@ export default function Registration() {
                 <div className="form-section">
                   <h3>Personal Information</h3>
                   
-                  <div className="grid grid-2">
-                    <div className="form-group">
-                      <label htmlFor="firstName" className="form-label">First Name *</label>
-                      <input
-                        type="text"
-                        id="firstName"
-                        name="firstName"
-                        value={formData.firstName}
-                        onChange={handleChange}
-                        className="form-input"
-                        required
-                      />
-                    </div>
-                    
-                    <div className="form-group">
-                      <label htmlFor="lastName" className="form-label">Last Name *</label>
-                      <input
-                        type="text"
-                        id="lastName"
-                        name="lastName"
-                        value={formData.lastName}
-                        onChange={handleChange}
-                        className="form-input"
-                        required
-                      />
-                    </div>
+                  <div className="form-group">
+                    <label htmlFor="fullName" className="form-label">Full Name *</label>
+                    <input
+                      type="text"
+                      id="fullName"
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleChange}
+                      className="form-input"
+                      placeholder="Enter your full name"
+                      required
+                    />
                   </div>
 
                   <div className="form-group">
@@ -151,18 +168,69 @@ export default function Registration() {
                     </div>
                     
                     <div className="form-group">
-                      <label htmlFor="age" className="form-label">Age *</label>
+                      <label htmlFor="dateOfBirth" className="form-label">Date of Birth *</label>
                       <input
-                        type="number"
-                        id="age"
-                        name="age"
-                        value={formData.age}
+                        type="date"
+                        id="dateOfBirth"
+                        name="dateOfBirth"
+                        value={formData.dateOfBirth}
                         onChange={handleChange}
                         className="form-input"
-                        min="4"
-                        max="99"
+                        max={new Date().toISOString().split('T')[0]} // Cannot be future date
                         required
                       />
+                      {formData.dateOfBirth && (
+                        <p style={{fontSize: '0.85rem', color: '#666', marginTop: '0.25rem'}}>
+                          Age: {calculateAge(formData.dateOfBirth)} years
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Parent/Guardian Information for Minors */}
+                  <div className="form-group">
+                    <p className="form-note" style={{fontSize: '0.9rem', color: '#666', marginBottom: '1rem'}}>
+                      <strong>For students under 18:</strong> Parent/Guardian information is required
+                    </p>
+                  </div>
+
+                  <div className="grid grid-2">
+                    <div className="form-group">
+                      <label htmlFor="parentGuardianName" className="form-label">
+                        Parent's / Guardian's Name {calculateAge(formData.dateOfBirth) < 18 ? '*' : ''}
+                      </label>
+                      <input
+                        type="text"
+                        id="parentGuardianName"
+                        name="parentGuardianName"
+                        value={formData.parentGuardianName}
+                        onChange={handleChange}
+                        className="form-input"
+                        placeholder="Parent or Guardian's full name"
+                        required={calculateAge(formData.dateOfBirth) < 18}
+                      />
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="relationshipToStudent" className="form-label">
+                        Relationship to Student {calculateAge(formData.dateOfBirth) < 18 ? '*' : ''}
+                      </label>
+                      <select
+                        id="relationshipToStudent"
+                        name="relationshipToStudent"
+                        value={formData.relationshipToStudent}
+                        onChange={handleChange}
+                        className="form-select"
+                        required={calculateAge(formData.dateOfBirth) < 18}
+                      >
+                        <option value="">Select relationship...</option>
+                        <option value="mother">Mother</option>
+                        <option value="father">Father</option>
+                        <option value="guardian">Legal Guardian</option>
+                        <option value="grandparent">Grandparent</option>
+                        <option value="aunt-uncle">Aunt/Uncle</option>
+                        <option value="other">Other</option>
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -209,20 +277,19 @@ export default function Registration() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="preferredSchedule" className="form-label">Preferred Schedule</label>
+                    <label htmlFor="preferredMode" className="form-label">Preferred Mode *</label>
                     <select
-                      id="preferredSchedule"
-                      name="preferredSchedule"
-                      value={formData.preferredSchedule}
+                      id="preferredMode"
+                      name="preferredMode"
+                      value={formData.preferredMode}
                       onChange={handleChange}
                       className="form-select"
+                      required
                     >
-                      <option value="">Select preferred timing...</option>
-                      <option value="morning-weekday">Morning Weekdays</option>
-                      <option value="evening-weekday">Evening Weekdays</option>
-                      <option value="weekend-morning">Weekend Morning</option>
-                      <option value="weekend-evening">Weekend Evening</option>
-                      <option value="flexible">Flexible</option>
+                      <option value="">Select preferred mode...</option>
+                      <option value="in-person">In-person</option>
+                      <option value="online">Online</option>
+                      <option value="hybrid">Hybrid (combination of both)</option>
                     </select>
                   </div>
                 </div>
@@ -309,6 +376,124 @@ export default function Registration() {
                       placeholder="Tell us about your goals, specific songs you'd like to learn, or any other information that would help us serve you better..."
                     />
                   </div>
+                </div>
+
+                {/* Consent and Agreements */}
+                <div className="form-section">
+                  <h3>Consent and Agreements</h3>
+                  <p style={{fontSize: '0.9rem', color: '#666', marginBottom: '1.5rem'}}>
+                    Please read and check all applicable consent forms and agreements below:
+                  </p>
+
+                  {/* Parental Consent - Show only for minors */}
+                  {calculateAge(formData.dateOfBirth) < 18 && (
+                    <div className="form-group checkbox-group">
+                      <label className="checkbox-label">
+                        <input
+                          type="checkbox"
+                          name="parentalConsent"
+                          checked={formData.parentalConsent}
+                          onChange={handleChange}
+                          className="form-checkbox"
+                          required={calculateAge(formData.dateOfBirth) < 18}
+                        />
+                        <span className="checkbox-text">
+                          <strong>Parental Consent (for minors):</strong> I give permission for my child to participate in Rhythm Raga Academy's classes and activities. *
+                        </span>
+                      </label>
+                    </div>
+                  )}
+
+                  {/* Medical Consent */}
+                  <div className="form-group checkbox-group">
+                    <label className="checkbox-label">
+                      <input
+                        type="checkbox"
+                        name="medicalConsent"
+                        checked={formData.medicalConsent}
+                        onChange={handleChange}
+                        className="form-checkbox"
+                        required
+                      />
+                      <span className="checkbox-text">
+                        <strong>Medical Consent:</strong> In case of emergency, I authorize the Academy to take necessary medical action. *
+                      </span>
+                    </label>
+                  </div>
+
+                  {/* Privacy & Data Consent */}
+                  <div className="form-group checkbox-group">
+                    <label className="checkbox-label">
+                      <input
+                        type="checkbox"
+                        name="privacyConsent"
+                        checked={formData.privacyConsent}
+                        onChange={handleChange}
+                        className="form-checkbox"
+                        required
+                      />
+                      <span className="checkbox-text">
+                        <strong>Privacy & Data Consent:</strong> I consent to Rhythm Raga Academy collecting and storing my personal information in compliance with privacy laws. *
+                      </span>
+                    </label>
+                  </div>
+
+                  {/* Photography & Recording Consent */}
+                  <div className="form-group checkbox-group">
+                    <label className="checkbox-label">
+                      <input
+                        type="checkbox"
+                        name="photographyConsent"
+                        checked={formData.photographyConsent}
+                        onChange={handleChange}
+                        className="form-checkbox"
+                      />
+                      <span className="checkbox-text">
+                        <strong>Photography & Recording Consent:</strong> I consent to my/my child's photographs, videos, or audio recordings being used for Academy's promotional or educational purposes. 
+                        <em style={{display: 'block', fontSize: '0.85rem', color: '#888', marginTop: '0.25rem'}}>
+                          (Optional - you can opt-out by leaving this unchecked)
+                        </em>
+                      </span>
+                    </label>
+                  </div>
+
+                  {/* Terms & Conditions Agreement */}
+                  <div className="form-group checkbox-group">
+                    <label className="checkbox-label">
+                      <input
+                        type="checkbox"
+                        name="termsConsent"
+                        checked={formData.termsConsent}
+                        onChange={handleChange}
+                        className="form-checkbox"
+                        required
+                      />
+                      <span className="checkbox-text">
+                        <strong>Terms & Conditions / Code of Conduct Agreement:</strong> I have read and agree to abide by the Academy's rules and policies. *
+                      </span>
+                    </label>
+                  </div>
+
+                  {/* Fee Payment Agreement */}
+                  <div className="form-group checkbox-group">
+                    <label className="checkbox-label">
+                      <input
+                        type="checkbox"
+                        name="feeAgreement"
+                        checked={formData.feeAgreement}
+                        onChange={handleChange}
+                        className="form-checkbox"
+                        required
+                      />
+                      <span className="checkbox-text">
+                        <strong>Fee Payment Agreement:</strong> I understand and agree to the fee structure and payment terms of Rhythm Raga Academy. *
+                      </span>
+                    </label>
+                  </div>
+
+                  <p style={{fontSize: '0.85rem', color: '#888', marginTop: '1rem'}}>
+                    * Required fields
+                  </p>
                 </div>
 
                 {/* Submit Button */}
