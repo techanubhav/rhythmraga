@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Contact Us - Get in Touch',
-  description: 'Contact Rhythm Raga Academy for inquiries about music and dance classes. Visit us at 123 Music Boulevard, call (555) 123-4567, or send a message. We\'d love to hear from you!',
+  description: 'Contact Rhythm Raga Academy for inquiries about music and dance classes. Call us at +61 402 286 502, or send a message. We\'d love to hear from you!',
   keywords: 'contact rhythm raga academy, music academy contact, dance academy phone number, academy location, music class inquiries, dance class questions, academy address',
   openGraph: {
     title: 'Contact Rhythm Raga Academy - We\'d Love to Hear From You',

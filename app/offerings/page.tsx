@@ -53,13 +53,13 @@ export default async function Offerings() {
               <ul style={{paddingLeft: '1.5rem', marginBottom: '2rem'}}>
                 <li>Fundamental breathing techniques and voice modulation</li>
                 <li>Classical ragas and their emotional expressions</li>
-                <li>Devotional songs (Bhajans, Kirtans, Ghazals)</li>
+                <li>Bollywood, Semi-classical, and Devotional songs</li>
                 <li>Light classical compositions</li>
                 <li>Performance skills and stage presence</li>
                 <li>Music theory and notation</li>
               </ul>
 
-              <div className="grid grid-2 mb-2">
+              {/* <div className="grid grid-2 mb-2">
                 <div className="card">
                   <h4>Beginner Level</h4>
                   <p><strong>Duration:</strong> 6 months</p>
@@ -72,7 +72,7 @@ export default async function Offerings() {
                   <p><strong>Frequency:</strong> 2-3 classes/week</p>
                   <p><strong>Fee:</strong> $150/month</p>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div>
               <img 
@@ -114,7 +114,7 @@ export default async function Offerings() {
                 <li>Solo and group choreography</li>
               </ul>
 
-              <div className="grid grid-2 mb-2">
+              {/* <div className="grid grid-2 mb-2">
                 <div className="card">
                   <h4>Regular Classes</h4>
                   <p><strong>Duration:</strong> Ongoing</p>
@@ -127,7 +127,7 @@ export default async function Offerings() {
                   <p><strong>Frequency:</strong> 3 classes/week</p>
                   <p><strong>Fee:</strong> $140/month</p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -164,7 +164,7 @@ export default async function Offerings() {
                 </ul>
               </div>
 
-              <div className="grid grid-2 mb-2">
+              {/* <div className="grid grid-2 mb-2">
                 <div className="card">
                   <h4>Little Dancers</h4>
                   <p><strong>Duration:</strong> Ongoing</p>
@@ -177,7 +177,7 @@ export default async function Offerings() {
                   <p><strong>Frequency:</strong> 2 classes/week</p>
                   <p><strong>Fee:</strong> $80/month</p>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div>
               <img 
@@ -218,7 +218,7 @@ export default async function Offerings() {
                 <li>Different tabla styles and gharanas</li>
               </ul>
 
-              <div className="grid grid-2 mb-2">
+              {/* <div className="grid grid-2 mb-2">
                 <div className="card">
                   <h4>Foundation Course</h4>
                   <p><strong>Duration:</strong> 8 months</p>
@@ -231,7 +231,7 @@ export default async function Offerings() {
                   <p><strong>Frequency:</strong> 2-3 classes/week</p>
                   <p><strong>Fee:</strong> $160/month</p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -244,21 +244,18 @@ export default async function Offerings() {
             <div>
               <h2 className="text-primary">Guitar</h2>
               <p>
-                Learn to play guitar across multiple genres including classical, folk, contemporary, 
-                and fusion. Our program caters to both acoustic and electric guitar enthusiasts.
+                Learn to play guitar with your favourite bollywood songs and ghazals.
               </p>
               
               <h3>Styles Covered:</h3>
               <ul style={{paddingLeft: '1.5rem', marginBottom: '2rem'}}>
-                <li>Classical guitar techniques</li>
-                <li>Folk and country strumming patterns</li>
-                <li>Contemporary pop and rock</li>
+                <li>Bollywood guitar techniques</li>
                 <li>Indian fusion guitar</li>
-                <li>Fingerpicking and lead guitar</li>
-                <li>Music theory and composition</li>
+                <li>Fingerpicking patterns</li>
+                <li>Guitar theory </li>
               </ul>
 
-              <div className="grid grid-2 mb-2">
+              {/* <div className="grid grid-2 mb-2">
                 <div className="card">
                   <h4>Beginner Course</h4>
                   <p><strong>Duration:</strong> 6 months</p>
@@ -271,7 +268,7 @@ export default async function Offerings() {
                   <p><strong>Frequency:</strong> 2 classes/week</p>
                   <p><strong>Fee:</strong> $130/month</p>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div>
               <img 
@@ -313,7 +310,7 @@ export default async function Offerings() {
                 <li>On-location rehearsals available</li>
               </ul>
 
-              <div className="grid grid-2 mb-2">
+              {/* <div className="grid grid-2 mb-2">
                 <div className="card">
                   <h4>Couple's Package</h4>
                   <p><strong>Sessions:</strong> 4-6 sessions</p>
@@ -326,7 +323,7 @@ export default async function Offerings() {
                   <p><strong>Duration:</strong> 4-6 weeks</p>
                   <p><strong>Price:</strong> $800-1200</p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -340,8 +337,7 @@ export default async function Offerings() {
             <div className="card">
               <h3>🎼 Trial Classes</h3>
               <p>
-                Not sure which program is right for you? We offer trial classes for all our programs 
-                at just $25 per session. Experience our teaching style before committing.
+                Not sure which program is right for you? We offer trial classes for all our programs. Experience our teaching style before committing.
               </p>
             </div>
             <div className="card">
@@ -355,7 +351,6 @@ export default async function Offerings() {
               <h3>📅 Flexible Scheduling</h3>
               <p>
                 We offer morning, evening, and weekend classes to accommodate different schedules. 
-                Make-up classes available for missed sessions.
               </p>
             </div>
           </div>

@@ -73,7 +73,7 @@ Comprehensive schema markup for rich search results:
   "description": "...",
   "url": "https://rhythmraga.com",
   "telephone": "+1-555-123-4567",
-  "email": "info@rhythmraga.com"
+  "email": "mansibh10@gmail.com"
 }
 ```
 
@@ -124,7 +124,7 @@ Replace placeholder URLs in:
 ### **Update Contact Information**
 Replace placeholder data in structured data:
 1. **Phone**: +1-555-123-4567
-2. **Email**: info@rhythmraga.com  
+2. **Email**: mansibh10@gmail.com  
 3. **Address**: 123 Music Boulevard, Harmony Heights, CA
 4. **Coordinates**: Update latitude/longitude
 

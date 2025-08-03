@@ -367,15 +367,14 @@ export default function Registration() {
 
                 <h4>Payment Information:</h4>
                 <p>
-                  Monthly fees are due on the 1st of each month. We accept cash, check, 
-                  or card payments. Payment plans available for longer programs.
+                  We accept cash, check, or card payments. Payment plans available for longer programs.
                 </p>
 
                 <div className="mt-2">
                   <h4>Questions?</h4>
                   <p>Contact us at:</p>
-                  <p>📧 <strong>info@rhythmraga.com</strong></p>
-                  <p>📞 <strong>(555) 123-4567</strong></p>
+                  <p>📧 <strong>mansibh10@gmail.com</strong></p>
+                  <p>📞 <strong>+61 402 286 502</strong></p>
                 </div>
               </div>
             </div>

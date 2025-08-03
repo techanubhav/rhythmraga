@@ -33,14 +33,14 @@ export const footer = {
           name: 'email',
           title: 'Email Address',
           type: 'string',
-          initialValue: 'info@rhythmraga.com',
+          initialValue: 'mansibh10@gmail.com',
           validation: (Rule: any) => Rule.required().email(),
         },
         {
           name: 'phone',
           title: 'Phone Number',
           type: 'string',
-          initialValue: '+1 (555) 123-4567',
+          initialValue: '+61 402 286 502',
           validation: (Rule: any) => Rule.required(),
         },
         {

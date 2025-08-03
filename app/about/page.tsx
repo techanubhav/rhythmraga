@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     url: '/about',
     images: [
       {
-        url: '/images/about-og.jpg',
+        url: '/images/aboutus.png',
         width: 1200,
         height: 630,
         alt: 'Rhythm Raga Academy team and facilities',
@@ -32,8 +32,8 @@ export default async function About() {
       {/* Page Header */}
       <section className="hero" style={{padding: '4rem 0'}}>
         <div className="container">
-          <h1>About Rhythm Raga</h1>
-          <p>Nurturing Musical Excellence Since 2014</p>
+          <h1>🎶 30 Years of Music & Dance Excellence</h1>
+          <p>From Devashram School of Music to Rhythm Raga in Australia — blending tradition, skill, and passion in every class.</p>
         </div>
       </section>
 
@@ -44,25 +44,16 @@ export default async function About() {
             <div>
               <h2>Our Story</h2>
               <p>
-                Rhythm Raga Academy was founded in 2014 with a simple yet profound mission: to preserve and promote 
-                the rich traditions of Indian classical music while embracing contemporary dance forms that bring 
-                joy and expression to people of all ages.
+              Rhythm Raga traces its roots back to the Devashram School of Music in India, a renowned institution dedicated to preserving and promoting the rich traditions of Indian classical music and dance. For over three decades, Devashram has nurtured hundreds of students in vocals, tabla, and other classical instruments, shaping confident performers and passionate learners.
               </p>
               <p>
-                What started as a small music school with just a handful of students has grown into a vibrant 
-                community of over 300 active learners, ranging from 4-year-old children taking their first steps 
-                in music to adults rediscovering their passion for the arts.
-              </p>
-              <p>
-                Our founder, Priya Sharma, a classically trained vocalist with over 20 years of performance 
-                experience, envisioned a place where traditional Indian music could flourish alongside contemporary 
-                dance forms, creating a unique learning environment that celebrates both heritage and innovation.
+              Today, Rhythm Raga offers formal coaching in Bollywood dance, Indian classical and semi-classical vocals, tabla, guitar, keyboard, and more. With a strong focus on personal growth, cultural connection, and stage confidence, our mission is to inspire every learner to embrace their rhythm — and carry it forward in every aspect of life.
               </p>
             </div>
             <div>
               <img 
-                src="/images/founder-priya-sharma.jpg" 
-                alt="Priya Sharma - Founder of Rhythm Raga Academy" 
+                src="/images/aboutus.png" 
+                alt="Founders of Rhythm Raga Academy" 
                 style={{width: '100%', height: '400px', objectFit: 'cover', borderRadius: '10px'}}
               />
             </div>
@@ -77,17 +68,13 @@ export default async function About() {
             <div className="card">
               <h3>Our Mission</h3>
               <p>
-                To provide exceptional music and dance education that nurtures creativity, builds confidence, 
-                and preserves cultural heritage while making the arts accessible to students of all backgrounds 
-                and skill levels.
+              At Rhythm Raga, our mission is to provide high-quality, structured training in music and dance that nurtures skill, confidence, and creativity. We aim to create a space where every learner — from beginners to advanced students — can explore their artistic potential while building a deeper connection to culture and self-expression.
               </p>
             </div>
             <div className="card">
               <h3>Our Vision</h3>
               <p>
-                To be the premier destination for music and dance education in our community, where students 
-                not only learn technical skills but also develop a lifelong appreciation for the transformative 
-                power of the arts.
+              Our vision is to become a leading centre for music and dance education that bridges Indian tradition with modern learning. We aspire to grow into a vibrant academy that inspires learners of all ages, creates lasting cultural impact, and serves as a platform for performances, collaborations, and lifelong artistic journeys.
               </p>
             </div>
           </div>
@@ -97,89 +84,33 @@ export default async function About() {
       {/* Our Instructors */}
       <section className="section">
         <div className="container">
-          <h2 className="text-center mb-3">Meet Our Expert Instructors</h2>
+          <h2 className="text-center mb-3">Meet Our Instructors</h2>
           <div className="grid grid-3">
             <div className="card text-center">
               <img 
-                src="/images/instructor-priya.jpg" 
-                alt="Priya Sharma" 
+                src="/images/headshot_anubhav.jpg" 
+                alt="Anubhav Sharma" 
                 style={{width: '150px', height: '150px', objectFit: 'cover', borderRadius: '50%', margin: '0 auto 1rem'}}
               />
-              <h4>Priya Sharma</h4>
-              <p className="text-secondary">Founder & Lead Vocal Instructor</p>
+              <h4>Anubhav Sharma</h4>
+              <p className="text-secondary">Co-Founder & Music Instructor</p>
               <p>
                 M.A. in Indian Classical Music, 20+ years of teaching experience. 
-                Specializes in Hindustani classical music and devotional songs.
+                Specializes in Vocal music, Tabla, Guitar, and Keyboard.
               </p>
             </div>
             
             <div className="card text-center">
               <img 
-                src="/images/instructor-arjun.jpg" 
-                alt="Arjun Patel" 
+                src="/images/headshot_mansi.png" 
+                alt="Mansi Bhardwaj" 
                 style={{width: '150px', height: '150px', objectFit: 'cover', borderRadius: '50%', margin: '0 auto 1rem'}}
               />
-              <h4>Arjun Patel</h4>
-              <p className="text-secondary">Tabla & Percussion Instructor</p>
+              <h4>Mansi Bhardwaj</h4>
+              <p className="text-secondary">Co-Founder & Dance Instructor</p>
               <p>
-                Trained under renowned tabla maestros, 15+ years of performance experience. 
-                Expert in both solo and accompaniment styles.
-              </p>
-            </div>
-            
-            <div className="card text-center">
-              <img 
-                src="/images/instructor-neha.jpg" 
-                alt="Neha Kapoor" 
-                style={{width: '150px', height: '150px', objectFit: 'cover', borderRadius: '50%', margin: '0 auto 1rem'}}
-              />
-              <h4>Neha Kapoor</h4>
-              <p className="text-secondary">Bollywood Dance Choreographer</p>
-              <p>
-                Professional dancer and choreographer with Bollywood industry experience. 
-                Specializes in contemporary and fusion dance styles.
-              </p>
-            </div>
-            
-            <div className="card text-center">
-              <img 
-                src="/images/instructor-raj.jpg" 
-                alt="Raj Mehta" 
-                style={{width: '150px', height: '150px', objectFit: 'cover', borderRadius: '50%', margin: '0 auto 1rem'}}
-              />
-              <h4>Raj Mehta</h4>
-              <p className="text-secondary">Guitar Instructor</p>
-              <p>
-                Versatile guitarist proficient in classical, folk, and contemporary styles. 
-                10+ years of teaching experience with all age groups.
-              </p>
-            </div>
-            
-            <div className="card text-center">
-              <img 
-                src="/images/instructor-kavya.jpg" 
-                alt="Kavya Singh" 
-                style={{width: '150px', height: '150px', objectFit: 'cover', borderRadius: '50%', margin: '0 auto 1rem'}}
-              />
-              <h4>Kavya Singh</h4>
-              <p className="text-secondary">Kids Dance Instructor</p>
-              <p>
-                Specialized in teaching children aged 4-14. Expert in making learning fun 
-                while building strong foundations in dance technique.
-              </p>
-            </div>
-            
-            <div className="card text-center">
-              <img 
-                src="/images/instructor-maya.jpg" 
-                alt="Maya Reddy" 
-                style={{width: '150px', height: '150px', objectFit: 'cover', borderRadius: '50%', margin: '0 auto 1rem'}}
-              />
-              <h4>Maya Reddy</h4>
-              <p className="text-secondary">Wedding Choreographer</p>
-              <p>
-                Specialist in wedding choreography with 200+ successful weddings. 
-                Expert in creating memorable performances for special occasions.
+                Sr. Diploma in Dance, 5+ years of teaching experience. 
+                Specializes in Bollywood and Contemporary dance.
               </p>
             </div>
           </div>
@@ -187,7 +118,7 @@ export default async function About() {
       </section>
 
       {/* Our Achievements */}
-      <section className="section section-alt">
+      {/* <section className="section section-alt">
         <div className="container">
           <h2 className="text-center mb-3">Our Achievements</h2>
           <div className="grid grid-2">
@@ -213,10 +144,10 @@ export default async function About() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Facilities */}
-      <section className="section">
+      {/* <section className="section">
         <div className="container">
           <h2 className="text-center mb-3">Our Facilities</h2>
           <div className="grid grid-3">
@@ -243,7 +174,7 @@ export default async function About() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Call to Action */}
       <section className="section section-alt">

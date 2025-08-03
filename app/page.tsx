@@ -147,7 +147,7 @@ export default async function Home() {
               <ul style={{marginBottom: '1.5rem', paddingLeft: '1.5rem'}}>
                 <li>Classical Ragas</li>
                 <li>Devotional Songs</li>
-                <li>Light Classical</li>
+                <li>Light Classical & Bollywood</li>
                 <li>Breathing Techniques</li>
               </ul>
               <a href="/offerings#indian-vocal" className="btn">Learn More</a>
@@ -186,20 +186,16 @@ export default async function Home() {
           <h2 className="text-center mb-3">Why Choose Rhythm Raga?</h2>
           <div className="grid grid-2">
             <div className="card">
-              <h3>🎵 Expert Instructors</h3>
-              <p>Learn from classically trained musicians and professional dancers with years of teaching experience.</p>
+              <h3>🎵 Training Tailored to You</h3>
+              <p>Every session ensures individual attention, whether you’re learning Bollywood dance, Indian classical music, or contemporary instruments.</p>
             </div>
             <div className="card">
-              <h3>🏆 Proven Results</h3>
-              <p>Our students have won numerous competitions and many have pursued successful careers in music and dance.</p>
+              <h3>🏆 Proven Heritage of Excellence</h3>
+              <p>From our roots at Devashram School of Music in India to Rhythm Raga in Australia, we bring over 30 years of formal training and performance experience in music and dance.</p>
             </div>
             <div className="card">
-              <h3>👨‍👩‍👧‍👦 All Ages Welcome</h3>
-              <p>From children to adults, we offer age-appropriate programs that cater to different learning styles and paces.</p>
-            </div>
-            <div className="card">
-              <h3>📍 Convenient Location</h3>
-              <p>Easily accessible location with flexible scheduling options including weekend and evening classes.</p>
+              <h3>👨‍👩‍👧‍👦 Skills That Go Beyond Classrooms</h3>
+              <p>More than just lessons — we nurture cultural connection, stage confidence, discipline, and creativity through structured coaching and performance opportunities.</p>
             </div>
           </div>
         </div>

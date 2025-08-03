@@ -83,8 +83,8 @@ export default function Contact() {
                 <span className="icon">📧</span>
                 <div>
                   <h4>Email</h4>
-                  <p>info@rhythmraga.com</p>
-                  <p>admissions@rhythmraga.com</p>
+                  <p>mansibh10@gmail.com</p>
+                  {/* <p>admissions@rhythmraga.com</p> */}
                 </div>
               </div>
 
@@ -92,12 +92,12 @@ export default function Contact() {
                 <span className="icon">📞</span>
                 <div>
                   <h4>Phone</h4>
-                  <p>Main: (555) 123-4567</p>
-                  <p>WhatsApp: (555) 123-4568</p>
+                  <p>Main: +61 402 286 502</p>
+                  <p>WhatsApp: +61 402 286 502</p>
                 </div>
               </div>
 
-              <div className="contact-info-item">
+              {/* <div className="contact-info-item">
                 <span className="icon">📍</span>
                 <div>
                   <h4>Address</h4>
@@ -114,16 +114,16 @@ export default function Contact() {
                   <p><strong>Saturday:</strong> 8:00 AM - 6:00 PM</p>
                   <p><strong>Sunday:</strong> 10:00 AM - 4:00 PM</p>
                 </div>
-              </div>
+              </div> */}
 
               <div className="contact-info-item">
                 <span className="icon">🌐</span>
                 <div>
                   <h4>Follow Us</h4>
                   <p>
-                    <a href="#" style={{marginRight: '1rem', textDecoration: 'none'}}>Facebook</a>
-                    <a href="#" style={{marginRight: '1rem', textDecoration: 'none'}}>Instagram</a>
-                    <a href="#" style={{textDecoration: 'none'}}>YouTube</a>
+                    {/* <a href="#" style={{marginRight: '1rem', textDecoration: 'none'}}>Facebook</a> */}
+                    <a href="https://www.instagram.com/rhythm_raga_studio" style={{marginRight: '1rem', textDecoration: 'none'}}>Instagram</a>
+                    <a href="https://www.youtube.com/@RhythmRagaStudio" style={{textDecoration: 'none'}}>YouTube</a>
                   </p>
                 </div>
               </div>
@@ -240,7 +240,7 @@ export default function Contact() {
       </section>
 
       {/* Location Map */}
-      <section className="section section-alt">
+      {/* <section className="section section-alt">
         <div className="container">
           <h2 className="text-center mb-3">Find Us</h2>
           <div className="grid grid-2">
@@ -281,10 +281,10 @@ export default function Contact() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* FAQ Section */}
-      <section className="section">
+      {/* <section className="section">
         <div className="container">
           <h2 className="text-center mb-3">Frequently Asked Questions</h2>
           <div className="grid grid-2">
@@ -307,8 +307,7 @@ export default function Contact() {
             <div className="card">
               <h4>What are your payment options?</h4>
               <p>
-                We accept cash, check, credit/debit cards, and online payments. Monthly fees are due on the 1st of each month. 
-                Payment plans are available for longer programs.
+                We accept cash, check, credit/debit cards, and online payments. Payment plans are available for longer programs.
               </p>
             </div>
 
@@ -337,7 +336,7 @@ export default function Contact() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Call to Action */}
       <section className="section section-alt">
