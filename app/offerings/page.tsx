@@ -74,13 +74,13 @@ export default async function Offerings() {
                 </div>
               </div> */}
             </div>
-            <div>
+            {/* <div>
               <img 
                 src="/images/indian-vocal-class.jpg" 
                 alt="Indian Vocal Music Class" 
                 style={{width: '100%', height: '400px', objectFit: 'cover', borderRadius: '10px'}}
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -89,13 +89,13 @@ export default async function Offerings() {
       <section id="bollywood-dance-adult" className="section section-alt">
         <div className="container">
           <div className="grid grid-2">
-            <div>
+            {/* <div>
               <img 
                 src="/images/bollywood-dance-adults.jpg" 
                 alt="Adult Bollywood Dance Class" 
                 style={{width: '100%', height: '400px', objectFit: 'cover', borderRadius: '10px'}}
               />
-            </div>
+            </div> */}
             <div>
               <h2 className="text-primary">Bollywood Dance - Adults</h2>
               <p>
@@ -179,13 +179,13 @@ export default async function Offerings() {
                 </div>
               </div> */}
             </div>
-            <div>
+            {/* <div>
               <img 
                 src="/images/bollywood-dance-kids.jpg" 
                 alt="Kids Bollywood Dance Class" 
                 style={{width: '100%', height: '400px', objectFit: 'cover', borderRadius: '10px'}}
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -194,13 +194,13 @@ export default async function Offerings() {
       <section id="tabla" className="section section-alt">
         <div className="container">
           <div className="grid grid-2">
-            <div>
+            {/* <div>
               <img 
                 src="/images/tabla-class.jpg" 
                 alt="Tabla Learning Session" 
                 style={{width: '100%', height: '400px', objectFit: 'cover', borderRadius: '10px'}}
               />
-            </div>
+            </div> */}
             <div>
               <h2 className="text-primary">Tabla</h2>
               <p>
@@ -270,13 +270,13 @@ export default async function Offerings() {
                 </div>
               </div> */}
             </div>
-            <div>
+            {/* <div>
               <img 
                 src="/images/guitar-lesson.jpg" 
                 alt="Guitar Learning Session" 
                 style={{width: '100%', height: '400px', objectFit: 'cover', borderRadius: '10px'}}
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -285,13 +285,13 @@ export default async function Offerings() {
       <section id="wedding-choreography" className="section section-alt">
         <div className="container">
           <div className="grid grid-2">
-            <div>
+            {/* <div>
               <img 
                 src="/images/wedding-choreography.jpg" 
                 alt="Wedding Dance Choreography" 
                 style={{width: '100%', height: '400px', objectFit: 'cover', borderRadius: '10px'}}
               />
-            </div>
+            </div> */}
             <div>
               <h2 className="text-primary">Wedding Choreography</h2>
               <p>
