@@ -8,7 +8,8 @@ export default function Contact() {
     email: '',
     phone: '',
     subject: '',
-    message: ''
+    message: '',
+    website: '' // Honeypot field - should remain empty
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -43,7 +44,8 @@ export default function Contact() {
           email: '',
           phone: '',
           subject: '',
-          message: ''
+          message: '',
+          website: '' // Reset honeypot field
         })
       } else {
         setSubmitStatus('error')
@@ -169,6 +171,27 @@ export default function Contact() {
                       value={formData.phone}
                       onChange={handleChange}
                       className="form-input"
+                    />
+                  </div>
+
+                  {/* Honeypot field - hidden from users, visible to bots */}
+                  <div style={{ 
+                    position: 'absolute', 
+                    left: '-9999px', 
+                    opacity: 0, 
+                    pointerEvents: 'none',
+                    height: 0,
+                    overflow: 'hidden'
+                  }}>
+                    <label htmlFor="website">Website (leave blank)</label>
+                    <input
+                      type="text"
+                      id="website"
+                      name="website"
+                      value={formData.website}
+                      onChange={handleChange}
+                      autoComplete="off"
+                      tabIndex={-1}
                     />
                   </div>
 

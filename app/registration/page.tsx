@@ -37,7 +37,9 @@ export default function Registration() {
     privacyConsent: false,
     photographyConsent: false,
     termsConsent: false,
-    feeAgreement: false
+    feeAgreement: false,
+    // Honeypot field - should remain empty
+    website: ''
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -89,29 +91,31 @@ export default function Registration() {
 
       if (response.ok) {
         setSubmitStatus('success')
-        setFormData({
-          fullName: '',
-          email: '',
-          phone: '',
-          dateOfBirth: '',
-          program: '',
-          experience: '',
-          preferredMode: '',
-          parentGuardianName: '',
-          relationshipToStudent: '',
-          emergencyContact: '',
-          emergencyPhone: '',
-          medicalConditions: '',
-          hearAboutUs: '',
-          additionalNotes: '',
-          // Consent checkboxes
-          parentalConsent: false,
-          medicalConsent: false,
-          privacyConsent: false,
-          photographyConsent: false,
-          termsConsent: false,
-          feeAgreement: false
-        })
+                       setFormData({
+                 fullName: '',
+                 email: '',
+                 phone: '',
+                 dateOfBirth: '',
+                 program: '',
+                 experience: '',
+                 preferredMode: '',
+                 parentGuardianName: '',
+                 relationshipToStudent: '',
+                 emergencyContact: '',
+                 emergencyPhone: '',
+                 medicalConditions: '',
+                 hearAboutUs: '',
+                 additionalNotes: '',
+                 // Consent checkboxes
+                 parentalConsent: false,
+                 medicalConsent: false,
+                 privacyConsent: false,
+                 photographyConsent: false,
+                 termsConsent: false,
+                 feeAgreement: false,
+                 // Reset honeypot field
+                 website: ''
+               })
       } else {
         setSubmitStatus('error')
       }
@@ -251,11 +255,32 @@ export default function Registration() {
                         <option value="aunt-uncle">Aunt/Uncle</option>
                         <option value="other">Other</option>
                       </select>
-                    </div>
-                  </div>
-                </div>
+                                           </div>
+                     </div>
 
-                {/* Program Selection */}
+                     {/* Honeypot field - hidden from users, visible to bots */}
+                     <div style={{ 
+                       position: 'absolute', 
+                       left: '-9999px', 
+                       opacity: 0, 
+                       pointerEvents: 'none',
+                       height: 0,
+                       overflow: 'hidden'
+                     }}>
+                       <label htmlFor="website">Website (leave blank)</label>
+                       <input
+                         type="text"
+                         id="website"
+                         name="website"
+                         value={formData.website}
+                         onChange={handleChange}
+                         autoComplete="off"
+                         tabIndex={-1}
+                       />
+                     </div>
+                   </div>
+
+                   {/* Program Selection */}
                 <div className="form-section">
                   <h3>Program Details</h3>
                   
