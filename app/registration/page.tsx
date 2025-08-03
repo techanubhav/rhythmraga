@@ -42,6 +42,26 @@ export default function Registration() {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState('')
+  const [showTermsModal, setShowTermsModal] = useState(false)
+  const [showFeeModal, setShowFeeModal] = useState(false)
+
+  const openTermsModal = (e: React.MouseEvent) => {
+    e.preventDefault()
+    setShowTermsModal(true)
+  }
+
+  const closeTermsModal = () => {
+    setShowTermsModal(false)
+  }
+
+  const openFeeModal = (e: React.MouseEvent) => {
+    e.preventDefault()
+    setShowFeeModal(true)
+  }
+
+  const closeFeeModal = () => {
+    setShowFeeModal(false)
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target
@@ -450,9 +470,9 @@ export default function Registration() {
                       />
                       <span className="checkbox-text">
                         <strong>Photography & Recording Consent:</strong> I consent to my/my child's photographs, videos, or audio recordings being used for Academy's promotional or educational purposes. 
-                        <em style={{display: 'block', fontSize: '0.85rem', color: '#888', marginTop: '0.25rem'}}>
+                        {/* <em style={{display: 'block', fontSize: '0.85rem', color: '#888', marginTop: '0.25rem'}}>
                           (Optional - you can opt-out by leaving this unchecked)
-                        </em>
+                        </em> */}
                       </span>
                     </label>
                   </div>
@@ -469,7 +489,14 @@ export default function Registration() {
                         required
                       />
                       <span className="checkbox-text">
-                        <strong>Terms & Conditions / Code of Conduct Agreement:</strong> I have read and agree to abide by the Academy's rules and policies. *
+                        <strong>Terms & Conditions / Code of Conduct Agreement:</strong> I have read and agree to abide by the Academy's{' '}
+                        <a 
+                          href="#" 
+                          onClick={openTermsModal}
+                          style={{color: 'var(--link-color)', textDecoration: 'underline'}}
+                        >
+                          Terms & Conditions and Code of Conduct
+                        </a>. *
                       </span>
                     </label>
                   </div>
@@ -486,7 +513,15 @@ export default function Registration() {
                         required
                       />
                       <span className="checkbox-text">
-                        <strong>Fee Payment Agreement:</strong> I understand and agree to the fee structure and payment terms of Rhythm Raga Academy. *
+                        <strong>Fee Payment Agreement:</strong> I understand and agree to the{' '}
+                        <a 
+                          href="#" 
+                          onClick={openFeeModal}
+                          style={{color: 'var(--link-color)', textDecoration: 'underline'}}
+                        >
+                          fee structure and payment terms
+                        </a>{' '}
+                        of Rhythm Raga Academy. *
                       </span>
                     </label>
                   </div>
@@ -566,6 +601,207 @@ export default function Registration() {
           </div>
         </div>
       </section>
+
+      {/* Terms & Conditions Modal */}
+      {showTermsModal && (
+        <div className="modal-overlay" onClick={closeTermsModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2>Terms & Conditions / Code of Conduct</h2>
+              <button 
+                className="modal-close"
+                onClick={closeTermsModal}
+                aria-label="Close modal"
+              >
+                ×
+              </button>
+            </div>
+            <div className="modal-body">
+              <div className="terms-section">
+                <h3>A. General Conduct</h3>
+                <ul>
+                  <li>Students are expected to be punctual for all classes.</li>
+                  <li>Respect must be shown to teachers, staff, and fellow students at all times.</li>
+                  <li>No disruptive behaviour or disrespectful language will be tolerated.</li>
+                </ul>
+              </div>
+
+              <div className="terms-section">
+                <h3>B. Class Attendance & Make-up Policy</h3>
+                <ul>
+                  <li>Missed classes will not be refunded.</li>
+                  <li>Make-up classes may be arranged at the Academy's discretion and are subject to the following conditions:
+                    <ul style={{marginTop: '0.5rem', paddingLeft: '1.5rem'}}>
+                      <li>Students must inform the Academy at least 24 hours in advance of any absence</li>
+                      <li>Make-up classes are subject to instructor and studio availability</li>
+                      <li>Only one make-up class per month is permitted per student</li>
+                      <li>Make-up classes must be scheduled within 30 days of the original missed class</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="terms-section">
+                <h3>C. Materials & Instruments</h3>
+                <ul>
+                  <li>Students must bring their own required materials/instruments unless otherwise provided by the Academy.</li>
+                  <li>Academy-owned instruments or equipment must be handled carefully and with respect.</li>
+                  <li>Any damage caused to Academy property due to negligence may incur repair/replacement costs to be paid by the student or parent/guardian.</li>
+                  <li>Students are responsible for the care and maintenance of any borrowed Academy equipment during the class period.</li>
+                </ul>
+              </div>
+
+              <div className="terms-section">
+                <h3>D. Safety</h3>
+                <ul>
+                  <li>Students must follow all safety instructions provided by instructors during classes.</li>
+                  <li>Parents/guardians are responsible for timely drop-off and pick-up of minor students.</li>
+                  <li>Students must report any injuries or accidents to instructors immediately.</li>
+                  <li>The Academy reserves the right to refuse service to any student who poses a safety risk to themselves or others.</li>
+                  <li>Students participate in all activities at their own risk and are encouraged to inform instructors of any physical limitations or health conditions.</li>
+                </ul>
+              </div>
+
+              <div className="terms-section">
+                <h3>E. Media & Promotion</h3>
+                <ul>
+                  <li>Students and parents have the option to consent or decline participation in photo, video, or audio recordings.</li>
+                  <li>This consent is managed through the separate Photography & Recording Consent checkbox in the registration form.</li>
+                  <li>Students who opt-out of media consent will not be included in promotional materials or Academy marketing.</li>
+                  <li>The Academy respects all privacy preferences and will honor opt-out requests at any time.</li>
+                  <li>Media consent can be updated by contacting the Academy administration.</li>
+                </ul>
+              </div>
+
+              <div className="terms-section">
+                <h3>F. Additional Terms</h3>
+                <ul>
+                  <li>The Academy reserves the right to modify these terms with 30 days written notice to students.</li>
+                  <li>Any violations of this Code of Conduct may result in suspension or termination of enrollment.</li>
+                  <li>Students and parents agree to communicate respectfully with Academy staff regarding any concerns or feedback.</li>
+                  <li>These terms are governed by the laws of the jurisdiction where Rhythm Raga Academy operates.</li>
+                </ul>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button 
+                className="btn btn-secondary" 
+                onClick={closeTermsModal}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Fee Payment Agreement Modal */}
+      {showFeeModal && (
+        <div className="modal-overlay" onClick={closeFeeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2>Fee Structure & Payment Terms</h2>
+              <button 
+                className="modal-close"
+                onClick={closeFeeModal}
+                aria-label="Close modal"
+              >
+                ×
+              </button>
+            </div>
+            <div className="modal-body">
+              <div className="terms-section">
+                <h3>1. Fee Structure</h3>
+                <ul>
+                  <li>Fees are charged as per the selected course and program duration.</li>
+                  <li>Fees are subject to periodic revision, with reasonable advance notice provided to all students.</li>
+                  <li>Current fee schedules are available upon request and will be provided during enrollment.</li>
+                </ul>
+              </div>
+
+              <div className="terms-section">
+                <h3>2. Payment Schedule</h3>
+                <ul>
+                  <li>All payments should be made as per the due date specified in your enrollment agreement.</li>
+                  <li><strong>Accepted payment methods:</strong>
+                    <ul style={{marginTop: '0.5rem', paddingLeft: '1.5rem'}}>
+                      <li><strong>Bank Transfer:</strong> Direct transfer to Academy's nominated account</li>
+                      <li><strong>Credit/Debit Card:</strong> Secure online payment via provided links</li>
+                      <li><strong>Cash:</strong> In person at the Academy office during business hours</li>
+                    </ul>
+                  </li>
+                  <li>Payment receipts will be provided for all transactions.</li>
+                </ul>
+              </div>
+
+              <div className="terms-section">
+                <h3>3. Late Payment Policy</h3>
+                <ul>
+                  <li>Payments received after the due date will incur a late fee of <strong>AUD $10 per week overdue</strong>.</li>
+                  <li>Failure to clear outstanding dues within <strong>30 days of the due date</strong> may result in suspension of classes until payment is made.</li>
+                  <li>Students with outstanding fees may not be permitted to attend classes or participate in Academy events.</li>
+                  <li>The Academy reserves the right to pursue collection of outstanding debts through appropriate channels.</li>
+                </ul>
+              </div>
+
+              <div className="terms-section">
+                <h3>4. Refund Policy</h3>
+                <ul>
+                  <li>Fees are <strong>non-refundable</strong> once the payment has been processed, except in the following circumstances:</li>
+                  <li><strong>Academy Cancellation:</strong> Full refund if a class or course is cancelled by Rhythm Raga Academy.</li>
+                  <li><strong>Advance Withdrawal:</strong> Refund available if the student withdraws before the start date and has given written notice at least <strong>14 days in advance</strong>.</li>
+                  <li>Refunds, where applicable, will be processed within <strong>14 business days</strong> via the original payment method.</li>
+                  <li>Administrative fees may apply to refund processing.</li>
+                </ul>
+              </div>
+
+              <div className="terms-section">
+                <h3>5. Missed Classes</h3>
+                <ul>
+                  <li><strong>No refunds or fee adjustments</strong> will be made for missed classes due to student absence.</li>
+                  <li>Make-up classes may be offered at the Academy's discretion under the following conditions:
+                    <ul style={{marginTop: '0.5rem', paddingLeft: '1.5rem'}}>
+                      <li>Absence is informed at least <strong>24 hours in advance</strong></li>
+                      <li>Absence is due to <strong>medical reasons with appropriate documentation</strong></li>
+                      <li>Make-up classes are subject to instructor and studio <strong>availability</strong></li>
+                      <li>Make-up classes must be scheduled within the current term/program period</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="terms-section">
+                <h3>6. Withdrawal & Notice Period</h3>
+                <ul>
+                  <li>Students wishing to withdraw must provide at least <strong>one month's written notice</strong> to the Academy.</li>
+                  <li>Fees for the notice month are <strong>payable in full</strong>, regardless of attendance during the notice period.</li>
+                  <li>Withdrawal notice must be submitted in writing (email acceptable) to the Academy administration.</li>
+                  <li>Verbal notice or non-attendance does not constitute formal withdrawal.</li>
+                  <li>Students may be liable for the full program fee if insufficient notice is provided.</li>
+                </ul>
+              </div>
+
+              <div className="terms-section">
+                <h3>7. Additional Terms</h3>
+                <ul>
+                  <li>All fees are quoted in Australian Dollars (AUD) unless otherwise specified.</li>
+                  <li>Payment plans may be available for longer programs - please discuss with Academy administration.</li>
+                  <li>The Academy reserves the right to modify fee structures with reasonable notice to existing students.</li>
+                  <li>These payment terms are governed by Australian consumer law and Academy policies.</li>
+                </ul>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button 
+                className="btn btn-secondary" 
+                onClick={closeFeeModal}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }
