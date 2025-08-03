@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   keywords: 'music academy, dance academy, Indian vocal music, Bollywood dance classes, tabla lessons, guitar classes, wedding choreography, music school near me, dance classes for adults, kids dance classes, baulkham hills, schofields, the ponds, rouse hill, blacktown, castle hill, bella vista, australia, sydney',
   openGraph: {
     title: 'Rhythm Raga Academy - Where Music Meets Movement',
-    description: 'Premier music and dance academy offering comprehensive programs in Indian Classical Music, Bollywood Dance, and more. Join our vibrant community of music and dance enthusiasts.',
+    description: 'An indian music and dance academy in Sydney Australia offering comprehensive programs in Indian Classical Music, Bollywood Dance, and more. Join our vibrant community of music and dance enthusiasts.',
     url: '/',
     images: [
       {
-        url: '/images/logo_og.png',
+        url: '/images/logo_square.png',
         width: 1200,
         height: 630,
         alt: 'Rhythm Raga - A studio for Indian music and dance lovers',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     title: 'Rhythm Raga Academy - Where Music Meets Movement',
-    description: 'Premier music and dance academy offering comprehensive programs in Indian Classical Music, Bollywood Dance, and more.',
+    description: 'An indian music and dance academy offering comprehensive programs in Indian Classical Music, Bollywood Dance, and more.',
   },
 }
 
