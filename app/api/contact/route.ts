@@ -29,8 +29,8 @@ export async function POST(request: NextRequest) {
     const spreadsheetId = process.env.GOOGLE_SHEET_ID
 
     // Prepare row data
-    const currentDate = new Date().toLocaleString('en-US', {
-      timeZone: 'America/Los_Angeles',
+    const currentDate = new Date().toLocaleString('en-AU', {
+      timeZone: 'Australia/Sydney',
       year: 'numeric',
       month: '2-digit',
       day: '2-digit',
