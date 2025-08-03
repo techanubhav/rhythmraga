@@ -89,14 +89,14 @@ export default async function RootLayout({
                   style={{height: '80px', width: 'auto'}}
                 />
               </div>
-              <div className="nav-menu">
+              <div className="nav-menu" id="navMenu">
                 <a href="/" className="nav-link">Home</a>
                 <a href="/about" className="nav-link">About Us</a>
                 <a href="/offerings" className="nav-link">Offerings</a>
                 <a href="/registration" className="nav-link">Student Registration</a>
                 <a href="/contact" className="nav-link">Contact Us</a>
               </div>
-              <div className="nav-toggle">
+              <div className="nav-toggle" id="navToggle">
                 <span className="bar"></span>
                 <span className="bar"></span>
                 <span className="bar"></span>
@@ -315,6 +315,28 @@ export default async function RootLayout({
             </p>
           </div>
         </footer>
+        
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            document.addEventListener('DOMContentLoaded', function() {
+              const toggle = document.getElementById('navToggle');
+              const menu = document.getElementById('navMenu');
+              
+              if (toggle && menu) {
+                toggle.addEventListener('click', function() {
+                  menu.classList.toggle('show');
+                });
+                
+                // Close menu when clicking on links
+                menu.addEventListener('click', function(e) {
+                  if (e.target.classList.contains('nav-link')) {
+                    menu.classList.remove('show');
+                  }
+                });
+              }
+            });
+          `
+        }} />
       </body>
     </html>
   )
