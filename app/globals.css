@@ -89,7 +89,13 @@ p {
   transition: opacity 0.3s ease;
 }
 
-.nav-logo img:hover {
+.nav-logo a {
+  text-decoration: none;
+  display: inline-block;
+  line-height: 0;
+}
+
+.nav-logo a:hover img {
   opacity: 0.8;
 }
 

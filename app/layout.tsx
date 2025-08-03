@@ -79,15 +79,17 @@ export default async function RootLayout({
           <nav className="navbar">
             <div className="nav-container">
               <div className="nav-logo">
-                <Image 
-                  src="/images/logo.png" 
-                  alt="Rhythm Raga Academy" 
-                  width={120}
-                  height={80}
-                  priority={true}
-                  sizes="120px"
-                  style={{height: '80px', width: 'auto'}}
-                />
+                <a href="/">
+                  <Image 
+                    src="/images/logo.png" 
+                    alt="Rhythm Raga Academy" 
+                    width={120}
+                    height={80}
+                    priority={true}
+                    sizes="120px"
+                    style={{height: '80px', width: 'auto'}}
+                  />
+                </a>
               </div>
               <div className="nav-menu" id="navMenu">
                 <a href="/" className="nav-link">Home</a>

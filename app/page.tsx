@@ -80,37 +80,38 @@ export default async function Home() {
       {/* About Preview Section */}
       <section className="section">
         <div className="container">
-          <div className="grid grid-2">
-            <div>
-              <h2>{homeContent?.aboutPreview?.title || "Discover Your Rhythm"}</h2>
-              {homeContent?.aboutPreview?.description ? (
-                <div>
-                  {homeContent.aboutPreview.description.map((block: any, index: number) => {
-                    if (block._type === 'block') {
-                      return (
-                        <p key={index}>
-                          {block.children?.map((child: any) => child.text).join('') || ''}
-                        </p>
-                      );
-                    }
-                    return null;
-                  })}
-                </div>
-              ) : (
-                <>
-                  <p>
-                    At Rhythm Raga, we believe that music and dance are universal languages that connect hearts and souls. 
-                    Our academy has been nurturing artistic talents for over a decade, providing comprehensive training in 
-                    traditional Indian music and contemporary dance forms.
-                  </p>
-                  <p>
-                    Whether you're a beginner taking your first steps or an advanced student looking to refine your skills, 
-                    our experienced instructors are here to guide you on your artistic journey.
-                  </p>
-                </>
-              )}
-              <a href="/about" className="btn btn-primary">Learn More About Us</a>
-            </div>
+          <div className="text-center" style={{maxWidth: '800px', margin: '0 auto'}}>
+            <h2>{homeContent?.aboutPreview?.title || "Discover Your Rhythm"}</h2>
+            {homeContent?.aboutPreview?.description ? (
+              <div>
+                {homeContent.aboutPreview.description.map((block: any, index: number) => {
+                  if (block._type === 'block') {
+                    return (
+                      <p key={index} style={{fontSize: '1.1rem', lineHeight: '1.7', marginBottom: '1.5rem'}}>
+                        {block.children?.map((child: any) => child.text).join('') || ''}
+                      </p>
+                    );
+                  }
+                  return null;
+                })}
+              </div>
+            ) : (
+              <>
+                <p style={{fontSize: '1.1rem', lineHeight: '1.7', marginBottom: '1.5rem'}}>
+                  At Rhythm Raga, we believe that music and dance are universal languages that connect hearts and souls. 
+                  Our academy has been nurturing artistic talents for over a decade, providing comprehensive training in 
+                  traditional Indian music and contemporary dance forms.
+                </p>
+                <p style={{fontSize: '1.1rem', lineHeight: '1.7', marginBottom: '1.5rem'}}>
+                  Whether you're a beginner taking your first steps or an advanced student looking to refine your skills, 
+                  our experienced instructors are here to guide you on your artistic journey.
+                </p>
+              </>
+            )}
+            <a href="/about" className="btn btn-primary">Learn More About Us</a>
+            
+            {/* Commented out image section */}
+            {/*
             <div>
               {homeContent?.aboutPreview?.image ? (
                 <Image 
@@ -132,6 +133,7 @@ export default async function Home() {
                 />
               )}
             </div>
+            */}
           </div>
         </div>
       </section>
